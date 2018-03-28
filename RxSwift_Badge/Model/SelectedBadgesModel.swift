@@ -51,14 +51,17 @@ class DefaultSelectedBadgesModel: SelectedBadgesModel {
   }
   
   init(selected initialSelection: [Badge]) {
+    // ???
     self.stateMachine = StateMachine(
       startingWith: initialSelection
     )
     
+    // バッジが選択されたことをUIViewへ通知するためのPublishRelay. (ViewModel層から移動)
     let badgeDidSelectRelay = RxCocoa.PublishRelay<Badge>()
     self.badgeDidSelectRelay = badgeDidSelectRelay
     self.badgeDidSelect = badgeDidSelectRelay.asSignal()
     
+    // バッジの選択が解除されたことをUIViewへ通知するためのPublishRelay. (ViewModel層から移動)
     let badgeDidDeselectRelay = RxCocoa.PublishRelay<Badge>()
     self.badgeDidDeselectRelay = badgeDidDeselectRelay
     self.badgeDidDeselect = badgeDidDeselectRelay.asSignal()
