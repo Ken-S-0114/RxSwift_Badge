@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxDataSources
 
 struct Badge {
   let id: Int
@@ -23,5 +24,13 @@ extension Badge: Hashable {
   // 同値性を確認するためのプロトコル
   static func ==(lhs: Badge, rhs: Badge) -> Bool {
     return lhs.id == rhs.id
+  }
+}
+
+extension Badge: RxDataSources.IdentifiableType {
+  typealias Identity = Int
+  
+  var identity: Identity {
+    return self.id
   }
 }

@@ -8,4 +8,5 @@ target 'RxSwift_Badge' do
   # Pods for RxSwift_Badge
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxDataSources'
 end
