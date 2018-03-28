@@ -18,6 +18,7 @@
 		B21508BF206BEC630058C73A /* BadgeSelectorWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508BE206BEC630058C73A /* BadgeSelectorWireframe.swift */; };
 		B21508C1206BF3BD0058C73A /* SelectedBadgesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508C0206BF3BD0058C73A /* SelectedBadgesViewModel.swift */; };
 		B21508C3206BFDB20058C73A /* SelectableBadgesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508C2206BFDB20058C73A /* SelectableBadgesViewModel.swift */; };
+		B21508C5206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508C4206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		B21508BE206BEC630058C73A /* BadgeSelectorWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSelectorWireframe.swift; sourceTree = "<group>"; };
 		B21508C0206BF3BD0058C73A /* SelectedBadgesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedBadgesViewModel.swift; sourceTree = "<group>"; };
 		B21508C2206BFDB20058C73A /* SelectableBadgesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableBadgesViewModel.swift; sourceTree = "<group>"; };
+		B21508C4206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSelectorCompletionViewModel.swift; sourceTree = "<group>"; };
 		C814F0FF34B48E7B8ACC4ADA /* Pods_RxSwift_Badge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_Badge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				B21508B720692B6D0058C73A /* BadgeSelectorViewModel.swift */,
 				B21508C0206BF3BD0058C73A /* SelectedBadgesViewModel.swift */,
 				B21508C2206BFDB20058C73A /* SelectableBadgesViewModel.swift */,
+				B21508C4206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				B21508A3206929870058C73A /* AppDelegate.swift in Sources */,
 				B21508C1206BF3BD0058C73A /* SelectedBadgesViewModel.swift in Sources */,
 				B21508BC206BE61D0058C73A /* Badge.swift in Sources */,
+				B21508C5206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift in Sources */,
 				B21508B820692B6D0058C73A /* BadgeSelectorViewModel.swift in Sources */,
 				B21508C3206BFDB20058C73A /* SelectableBadgesViewModel.swift in Sources */,
 				B21508BF206BEC630058C73A /* BadgeSelectorWireframe.swift in Sources */,

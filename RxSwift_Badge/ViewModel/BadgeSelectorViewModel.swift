@@ -6,58 +6,60 @@
 //  Copyright © 2018年 佐藤賢. All rights reserved.
 //
 
-/*
- View から ViewModel への入力:
-  -> Done ボタンのタップイベントの Signal
- ViewModel から View への出力:
-  -> Done ボタンの有効/無効フラグ の Driver
- ViewModel の依存:
-  -> 選択された badge の一覧を保持した BehaviorRelay
- */
-
 import RxSwift
 import RxCocoa
 
-// Doneボタンに対応するViewModel.
-class BadgeSelectorViewModel {
+class BadgesSelectorViewModel {
   
   typealias Dependency = (
-    // 選択されたbadge数の変化がわかるBehaviorRelay.
-    selectedBadgesRelay: BehaviorRelay<[Badge]>,
-    // 別の画面へ遷移するためのクラス. このクラスのメソッドを叩くと新しい画面へ遷移できる.
+    // 依存: すべてのバッジの一覧を取得するためのリポジトリ.
+    selectedModel: SelectedBadgesModel,
+    selectableModel: SelectableBadgesModel,
     wireframe: BadgeSelectorWireframe
   )
+  typealias Input = (
+    // View からの入力: Done ボタンのタップイベントの Signal
+    doneTap: RxCocoa.Signal<Void>,
+    // View からの入力: 上部バッジのタップイベントの Signal
+    selectedTap: RxCocoa.Signal<Badge>,
+    // View からの入力: 下部バッジのタップイベントの Signal。
+    selectableTap: RxCocoa.Signal<Badge>
+  )
   
-  // View への出力: Doneボタンの有効/無効フラグのDriver.
-  let canComplete: RxCocoa.Driver<Bool>
+  // View への出力: 子のViewModelのプロパティを介して各コンポーネントへの出力を公開する
+  let selectedViewModel: SelectedBadgesViewModel
+  let selectableViewModel: SelectableBadgesViewModel
+  let completionViewModel: BadgeSelectorCompletionViewModel
   
-  private let dependency: Dependency
-  private let disposeBag = DisposeBag()
+  private let disposeBag = RxSwift.DisposeBag()
   
-  init(
-    // View からの入力: DoneボタンのタップイベントのSignal.
-    input doneTap: RxCocoa.Signal<Void>,
-    dependency: Dependency
-    ) {
-    self.dependency = dependency
+  init(input: Input, dependency: Dependency) {
     
-    // バッジが一つも選択されていなければ, UINavigationBar上のDoneボタンを無効にする.
-    self.canComplete = dependency.selectedBadgesRelay
-      .map { selection in !selection.isEmpty }
-      // エラーが発生時に指定した Driver のイベントを通知する
-      .asDriver(
-        // エラーを無視
-        onErrorDriveWith: .empty()
+    let selectedModel = dependency.selectModel
+    
+    // 子のViewModel を内部的に作成する.
+    self.selectedViewModel = SelectedBadgesViewModel(
+      input: input.selectedTap,
+      dependency: selectedModel
     )
     
-    // Doneボタンタップ時に画面を遷移させる.
-    doneTap
-      .emit(onNext: { [weak self] _ in
-        guard let `self` = self else { return }
-        self.dependency.wireframe.goToResultScreen(
-          with: self.dependency.selectedBadgesRelay.value
-        )
-      })
-      .disposed(by: disposeBag)
+    
+    self.selectableViewModel = SelectableBadgesViewModel(
+      input: input.selectableTap,
+      dependency: (
+        selectedModel: selectedModel,
+        selectableModel: dependency.selectableModel
+      )
+    )
+    
+    self.completionViewModel = BadgeSelectorCompletionViewModel(
+      input: input.doneTap,
+      dependency: (
+        selectedModel: selectedModel,
+        wireframe: dependency.wireframe
+      )
+    )
+    
   }
+  
 }
