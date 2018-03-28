@@ -6,6 +6,15 @@
 //  Copyright © 2018年 佐藤賢. All rights reserved.
 //
 
+/*
+ View から ViewModel への入力:
+  -> Done ボタンのタップイベントの Signal
+ ViewModel から View への出力:
+  -> Done ボタンの有効/無効フラグ の Driver
+ ViewModel の依存:
+  -> 選択された badge の一覧を保持した BehaviorRelay
+ */
+
 import RxSwift
 import RxCocoa
 

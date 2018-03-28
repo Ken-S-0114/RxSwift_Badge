@@ -6,6 +6,16 @@
 //  Copyright © 2018年 佐藤賢. All rights reserved.
 //
 
+/*
+ View から ViewModel への入力:
+  -> 上部バッジのタップイベントの Signal
+ ViewModel から View への出力:
+  -> 上部に表示するバッジの一覧の Driver
+  -> 選択解除されたバッジを通知する Signal
+ ViewModel の依存:
+  -> 選択された badge の一覧を保持した BehaviorRelay
+ */
+
 import RxSwift
 import RxCocoa
 
@@ -20,13 +30,13 @@ class SelectedBadgesViewModel {
   private let selectedBadgesRelay: RxCocoa.BehaviorRelay<[Badge]>
   private let badgeDidDeselectRelay: RxCocoa.PublishRelay<Badge>
   
-  private let disposeBag = DisposeBag()
+  private let disposeBag = RxSwift.DisposeBag()
   
   init(
     // View からの入力: 上部バッジのタップイベントのSignal
-      selectedTap: RxCocoa.Signal<Badge>,
-      // 依存: 選択されたbadgeの一覧を保持したBehaviorRelay
-      dependency selectedBadgesRelay: RxCocoa.BehaviorRelay<[Badge]>
+    selectedTap: RxCocoa.Signal<Badge>,
+    // 依存: 選択されたbadgeの一覧を保持したBehaviorRelay
+    dependency selectedBadgesRelay: RxCocoa.BehaviorRelay<[Badge]>
     ) {
     // 選択済みのバッジの出力を
     self.selectedBadgesRelay = selectedBadgesRelay
@@ -39,15 +49,17 @@ class SelectedBadgesViewModel {
     
     // 上部バッジをタップで選択を解除する
     selectedTap
-        .emit(onNext: { [weak self] badge in
-          guard let `self` = self,
-            let index = self.selectedBadgesRelay.value.index(of: badge) else { return }
-          var newSelectedBadges = self.selectedBadgesRelay.value
-          newSelectedBadges.remove(at: index)
-          self.selectedBadgesRelay.accept(newSelectedBadges)
-          
-          self.badgeDidDeselectRelay.accept(badge)
-          })
-    .disposed(by: disposeBag)
+      .emit(onNext: { [weak self] badge in
+        guard let `self` = self,
+          let index = self.selectedBadgesRelay.value.index(of: badge) else { return }
+        
+        // 選択されたbadgeの一覧を保持したBehaviorRelayにタップされたBadgeを削除
+        var newSelectedBadges = self.selectedBadgesRelay.value
+        newSelectedBadges.remove(at: index)
+        // イベントを流す
+        self.selectedBadgesRelay.accept(newSelectedBadges)
+        self.badgeDidDeselectRelay.accept(badge)
+      })
+      .disposed(by: disposeBag)
   }
 }
