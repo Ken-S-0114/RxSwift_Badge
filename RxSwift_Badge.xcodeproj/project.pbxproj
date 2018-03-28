@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		270AE142E3B8EE58B318DF21 /* Pods_RxSwift_Badge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C814F0FF34B48E7B8ACC4ADA /* Pods_RxSwift_Badge.framework */; };
 		B21508A3206929870058C73A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508A2206929870058C73A /* AppDelegate.swift */; };
-		B21508A5206929870058C73A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508A4206929870058C73A /* ViewController.swift */; };
 		B21508A8206929870058C73A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21508A6206929870058C73A /* Main.storyboard */; };
 		B21508AA206929870058C73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21508A9206929870058C73A /* Assets.xcassets */; };
 		B21508AD206929870058C73A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21508AB206929870058C73A /* LaunchScreen.storyboard */; };
+		B21508B820692B6D0058C73A /* BadgeSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508B720692B6D0058C73A /* BadgeSelectorViewModel.swift */; };
+		B21508BA206BE4440058C73A /* SelectedBadgesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508B9206BE4440058C73A /* SelectedBadgesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,11 +21,12 @@
 		2F793553F0E35FA65E81D21D /* Pods-RxSwift_Badge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_Badge.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwift_Badge/Pods-RxSwift_Badge.release.xcconfig"; sourceTree = "<group>"; };
 		B215089F206929870058C73A /* RxSwift_Badge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwift_Badge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21508A2206929870058C73A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B21508A4206929870058C73A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B21508A7206929870058C73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B21508A9206929870058C73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B21508AC206929870058C73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B21508AE206929870058C73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B21508B720692B6D0058C73A /* BadgeSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSelectorViewModel.swift; sourceTree = "<group>"; };
+		B21508B9206BE4440058C73A /* SelectedBadgesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedBadgesModel.swift; sourceTree = "<group>"; };
 		C814F0FF34B48E7B8ACC4ADA /* Pods_RxSwift_Badge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_Badge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,14 +80,39 @@
 		B21508A1206929870058C73A /* RxSwift_Badge */ = {
 			isa = PBXGroup;
 			children = (
+				B21508B620692B010058C73A /* Model */,
+				B21508B520692AFC0058C73A /* View */,
+				B21508B420692AEE0058C73A /* ViewModel */,
 				B21508A2206929870058C73A /* AppDelegate.swift */,
-				B21508A4206929870058C73A /* ViewController.swift */,
 				B21508A6206929870058C73A /* Main.storyboard */,
 				B21508A9206929870058C73A /* Assets.xcassets */,
 				B21508AB206929870058C73A /* LaunchScreen.storyboard */,
 				B21508AE206929870058C73A /* Info.plist */,
 			);
 			path = RxSwift_Badge;
+			sourceTree = "<group>";
+		};
+		B21508B420692AEE0058C73A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B21508B720692B6D0058C73A /* BadgeSelectorViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B21508B520692AFC0058C73A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B21508B620692B010058C73A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B21508B9206BE4440058C73A /* SelectedBadgesModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B21508A5206929870058C73A /* ViewController.swift in Sources */,
 				B21508A3206929870058C73A /* AppDelegate.swift in Sources */,
+				B21508B820692B6D0058C73A /* BadgeSelectorViewModel.swift in Sources */,
+				B21508BA206BE4440058C73A /* SelectedBadgesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
