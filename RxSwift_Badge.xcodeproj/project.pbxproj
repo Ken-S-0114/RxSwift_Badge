@@ -19,6 +19,10 @@
 		B21508C1206BF3BD0058C73A /* SelectedBadgesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508C0206BF3BD0058C73A /* SelectedBadgesViewModel.swift */; };
 		B21508C3206BFDB20058C73A /* SelectableBadgesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508C2206BFDB20058C73A /* SelectableBadgesViewModel.swift */; };
 		B21508C5206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508C4206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift */; };
+		B21508C7206D3BF70058C73A /* AllBadgesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508C6206D3BF70058C73A /* AllBadgesModel.swift */; };
+		B21508C9206D3DEB0058C73A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508C8206D3DEB0058C73A /* Result.swift */; };
+		B21508CB206D42AF0058C73A /* BadgesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508CA206D42AF0058C73A /* BadgesRepository.swift */; };
+		B21508CD206D454F0058C73A /* EntityModelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21508CC206D454F0058C73A /* EntityModelRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		B21508C0206BF3BD0058C73A /* SelectedBadgesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedBadgesViewModel.swift; sourceTree = "<group>"; };
 		B21508C2206BFDB20058C73A /* SelectableBadgesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableBadgesViewModel.swift; sourceTree = "<group>"; };
 		B21508C4206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSelectorCompletionViewModel.swift; sourceTree = "<group>"; };
+		B21508C6206D3BF70058C73A /* AllBadgesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesModel.swift; sourceTree = "<group>"; };
+		B21508C8206D3DEB0058C73A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		B21508CA206D42AF0058C73A /* BadgesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesRepository.swift; sourceTree = "<group>"; };
+		B21508CC206D454F0058C73A /* EntityModelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityModelRepository.swift; sourceTree = "<group>"; };
 		C814F0FF34B48E7B8ACC4ADA /* Pods_RxSwift_Badge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_Badge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,6 +107,9 @@
 				B21508A9206929870058C73A /* Assets.xcassets */,
 				B21508AB206929870058C73A /* LaunchScreen.storyboard */,
 				B21508AE206929870058C73A /* Info.plist */,
+				B21508C8206D3DEB0058C73A /* Result.swift */,
+				B21508CA206D42AF0058C73A /* BadgesRepository.swift */,
+				B21508CC206D454F0058C73A /* EntityModelRepository.swift */,
 			);
 			path = RxSwift_Badge;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 			children = (
 				B21508B9206BE4440058C73A /* SelectedBadgesModel.swift */,
 				B21508BB206BE61D0058C73A /* Badge.swift */,
+				B21508C6206D3BF70058C73A /* AllBadgesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,13 +285,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B21508CD206D454F0058C73A /* EntityModelRepository.swift in Sources */,
 				B21508A3206929870058C73A /* AppDelegate.swift in Sources */,
 				B21508C1206BF3BD0058C73A /* SelectedBadgesViewModel.swift in Sources */,
 				B21508BC206BE61D0058C73A /* Badge.swift in Sources */,
 				B21508C5206C09F80058C73A /* BadgeSelectorCompletionViewModel.swift in Sources */,
+				B21508C7206D3BF70058C73A /* AllBadgesModel.swift in Sources */,
 				B21508B820692B6D0058C73A /* BadgeSelectorViewModel.swift in Sources */,
+				B21508C9206D3DEB0058C73A /* Result.swift in Sources */,
 				B21508C3206BFDB20058C73A /* SelectableBadgesViewModel.swift in Sources */,
 				B21508BF206BEC630058C73A /* BadgeSelectorWireframe.swift in Sources */,
+				B21508CB206D42AF0058C73A /* BadgesRepository.swift in Sources */,
 				B21508BA206BE4440058C73A /* SelectedBadgesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
